@@ -13,10 +13,10 @@ WORKDIR /app
 ENV IS_DOCKER=true
 ENV SASS=/usr/local/bin/sass
 ENV STATPING_DIR=/app
-ENV PORT=8181
+ENV PORT=8080
 
-EXPOSE 8181
+EXPOSE $PORT
 
 HEALTHCHECK --interval=60s --timeout=10s --retries=3 CMD curl -s "http://localhost:$PORT/health" | jq -r -e ".online==true"
 
-CMD statping --port 8181
+CMD statping --port $PORT
